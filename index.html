@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="لِنامی — پوشاک لوکس نوزاد و کودک. با عشق برای کوچولوهای شما." />
+  <meta name="keywords" content="لباس نوزاد، پوشاک کودک، لباس بچه، لنامی، لباس لوکس کودک" />
+  <meta property="og:title" content="Lenami — پوشاک لوکس کودک" />
+  <meta property="og:description" content="با عشق برای کوچولوهای شما" />
+  <title>Lenami | پوشاک لوکس نوزاد و کودک</title>
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --cream:   #F8F4EE;
+      --blush:   #E8CFC8;
+      --sage:    #A8B5A2;
+      --charcoal:#333333;
+      --white:   #FFFFFF;
+      --blush-deep: #D4AFA7;
+      --sage-deep:  #7D9077;
+      --cream-dark: #EDE6DA;
+      --shadow:  rgba(51,51,51,0.08);
+      --radius:  18px;
+      --radius-sm: 10px;
+      --transition: 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      direction: rtl;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY SCALE ─── */
+    .display    { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; }
+    .heading-2  { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 400; letter-spacing: -0.01em; }
+    .heading-3  { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 500; }
+    .body-copy  { font-size: 1rem; line-height: 1.8; color: #555; }
+    .caption    { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-deep); }
+
+    /* ─── UTILITIES ─── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 96px 0; }
+    .text-center { text-align: center; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* fade-in on scroll */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+    .btn-primary:hover {
+      background: #222;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(51,51,51,0.22);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid var(--charcoal);
+    }
+    .btn-outline:hover {
+      background: var(--charcoal);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+    .btn-blush {
+      background: var(--blush-deep);
+      color: var(--white);
+    }
+    .btn-blush:hover {
+      background: #c79d95;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(208,159,151,0.35);
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 48px; height: 2px;
+      background: var(--blush-deep);
+      margin: 20px auto 40px;
+      border: none;
+    }
+
+    /* ══════════════════════════════════
+       NAV
+    ══════════════════════════════════ */
+    #navbar {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(248,244,238,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #navbar.scrolled {
+      border-color: var(--cream-dark);
+      box-shadow: 0 2px 24px var(--shadow);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-mark {
+      width: 38px; height: 38px;
+      background: var(--charcoal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-mark span {
+      color: var(--cream);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .logo-text {
+      font-size: 1.35rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: var(--charcoal);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.92rem;
+      color: #555;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 0; height: 1.5px;
+      background: var(--blush-deep);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--charcoal);
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px; right: 0; left: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--cream-dark);
+      padding: 24px;
+      flex-direction: column;
+      gap: 18px;
+      z-index: 999;
+      box-shadow: 0 12px 40px var(--shadow);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.05rem; color: var(--charcoal); padding: 6px 0; border-bottom: 1px solid var(--cream-dark); }
+
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--cream) 55%, var(--blush) 100%);
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* signature element: delicate petal shapes */
+    #hero::before {
+      content: '';
+      position: absolute;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(232,207,200,0.45) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -100px; left: -120px;
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(168,181,162,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: 40px; right: -60px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow-line { width: 32px; height: 1px; background: var(--blush-deep); }
+    .hero-display {
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      font-weight: 200;
+      letter-spacing: 0.22em;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .hero-display em {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--blush-deep);
+    }
+    .hero-slogan {
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 300;
+      color: #666;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-image-wrap {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-image-placeholder {
+      aspect-ratio: 4/5;
+      background: linear-gradient(145deg, var(--blush) 0%, var(--cream-dark) 100%);
+      border-radius: 40% 60% 55% 45% / 45% 55% 60% 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      animation: morphBlob 8s ease-in-out infinite;
+    }
+    @keyframes morphBlob {
+      0%,100% { border-radius: 40% 60% 55% 45% / 45% 55% 60% 40%; }
+      33%      { border-radius: 55% 45% 40% 60% / 60% 40% 55% 45%; }
+      66%      { border-radius: 45% 55% 60% 40% / 40% 60% 45% 55%; }
+    }
+    .hero-image-inner {
+      text-align: center;
+      padding: 40px;
+    }
+    .hero-image-inner .big-icon { font-size: 5rem; opacity: 0.6; margin-bottom: 12px; }
+    .hero-image-inner p { font-size: 0.85rem; color: #888; letter-spacing: 0.08em; }
+    .hero-badge {
+      position: absolute;
+      bottom: 32px;
+      left: -24px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 14px 20px;
+      box-shadow: 0 8px 32px var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 170px;
+    }
+    .hero-badge-icon { font-size: 1.6rem; }
+    .hero-badge-text { font-size: 0.78rem; line-height: 1.5; color: #555; }
+    .hero-badge-text strong { display: block; color: var(--charcoal); font-weight: 600; }
+
+    /* ══════════════════════════════════
+       SECTION HEADER
+    ══════════════════════════════════ */
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header .caption { margin-bottom: 12px; display: block; }
+    .section-header .heading-2 { margin-bottom: 0; }
+
+    /* ══════════════════════════════════
+       PRODUCTS
+    ══════════════════════════════════ */
+    #products { background: var(--white); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(51,51,51,0.1);
+    }
+    .product-image {
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, var(--blush) 0%, var(--cream-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(51,51,51,0.04));
+    }
+    .product-icon { font-size: 3.5rem; opacity: 0.55; transition: transform 0.4s ease; }
+    .product-card:hover .product-icon { transform: scale(1.12); }
+    .product-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--white);
+      color: var(--sage-deep);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .product-info { padding: 20px 22px 22px; }
+    .product-category { font-size: 0.75rem; color: var(--sage-deep); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .product-name { font-size: 1.05rem; font-weight: 500; margin-bottom: 4px; }
+    .product-desc { font-size: 0.83rem; color: #888; line-height: 1.6; margin-bottom: 16px; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); }
+    .product-price span { font-size: 0.78rem; font-weight: 400; color: #888; }
+    .product-btn {
+      font-size: 0.8rem;
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .product-btn:hover { background: #111; }
+
+    /* ══════════════════════════════════
+       WHY LENAMI
+    ══════════════════════════════════ */
+    #why { background: var(--cream); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .why-card:hover {
+      border-color: var(--blush);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px var(--shadow);
+    }
+    .why-icon {
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush) 0%, var(--cream-dark) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 20px;
+      transition: transform 0.3s;
+    }
+    .why-card:hover .why-icon { transform: scale(1.1) rotate(-5deg); }
+    .why-title { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+    .why-desc { font-size: 0.87rem; color: #777; line-height: 1.7; }
+
+    /* ══════════════════════════════════
+       HOW TO ORDER
+    ══════════════════════════════════ */
+    #order { background: var(--charcoal); color: var(--cream); }
+    #order .section-header .caption { color: var(--blush); }
+    #order .section-header .heading-2 { color: var(--cream); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    /* connector line */
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 36px; right: 12.5%; left: 12.5%;
+      height: 1px;
+      background: linear-gradient(to left, transparent, rgba(232,207,200,0.4), rgba(232,207,200,0.4), transparent);
+    }
+    .step { text-align: center; padding: 0 16px; position: relative; }
+    .step-num {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(232,207,200,0.12);
+      border: 1.5px solid rgba(232,207,200,0.35);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--blush);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      z-index: 1;
+    }
+    .step:hover .step-num {
+      background: var(--blush-deep);
+      color: var(--white);
+      border-color: var(--blush-deep);
+      transform: scale(1.08);
+    }
+    .step-icon { font-size: 1.4rem; }
+    .step-title { font-size: 1rem; font-weight: 500; color: var(--cream); margin-bottom: 10px; }
+    .step-desc { font-size: 0.85rem; color: rgba(248,244,238,0.55); line-height: 1.7; }
+
+    /* ══════════════════════════════════
+       INSTAGRAM STRIP
+    ══════════════════════════════════ */
+    #instagram { background: var(--blush); padding: 72px 0; }
+    .insta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .insta-text { text-align: center; }
+    .insta-text .caption { color: var(--sage-deep); margin-bottom: 8px; display: block; }
+    .insta-handle {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--charcoal);
+    }
+    .insta-handle a { transition: color 0.2s; }
+    .insta-handle a:hover { color: var(--sage-deep); }
+    .insta-photos {
+      display: flex;
+      gap: 10px;
+    }
+    .insta-thumb {
+      width: 80px; height: 80px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--sage) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      opacity: 0.7;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .insta-thumb:hover { opacity: 1; transform: scale(1.06); }
+
+    /* ══════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════ */
+    #testimonials { background: var(--white); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 44px var(--shadow);
+    }
+    .testimonial-quote {
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--blush-deep);
+      opacity: 0.5;
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-size: 0.93rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush) 0%, var(--sage) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: var(--white);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.9rem; font-weight: 600; }
+    .author-city { font-size: 0.78rem; color: #999; }
+    .stars { color: #E8B88A; font-size: 0.85rem; margin-bottom: 4px; }
+
+    /* ══════════════════════════════════
+       FAQ
+    ══════════════════════════════════ */
+    #faq { background: var(--cream); }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--cream-dark);
+      transition: border-color 0.3s;
+    }
+    .faq-item.open { border-color: var(--blush-deep); }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      gap: 12px;
+      user-select: none;
+    }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+      color: var(--sage-deep);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--blush-deep); color: var(--white); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 24px;
+    }
+    .faq-answer p { font-size: 0.9rem; color: #666; line-height: 1.8; padding-bottom: 20px; }
+    .faq-item.open .faq-answer { max-height: 200px; }
+
+    /* ══════════════════════════════════
+       CONTACT
+    ══════════════════════════════════ */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info h3 { font-size: 1.6rem; font-weight: 300; margin-bottom: 16px; }
+    .contact-info p { color: #666; line-height: 1.8; margin-bottom: 36px; font-size: 0.95rem; }
+    .social-links { display: flex; flex-direction: column; gap: 14px; }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--charcoal);
+    }
+    .social-link:hover {
+      border-color: var(--blush-deep);
+      transform: translateX(-4px);
+      background: var(--blush);
+    }
+    .social-link-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .social-telegram  { background: #E3F2FD; }
+    .social-bale      { background: #E8F5E9; }
+    .social-rubika    { background: #FFF8E1; }
+    .social-instagram { background: #FCE4EC; }
+    .social-link-text strong { display: block; font-size: 0.95rem; }
+    .social-link-text span   { font-size: 0.8rem; color: #999; }
+    .contact-form-wrap {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+    .contact-form-wrap h4 { font-size: 1.15rem; font-weight: 500; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.85rem; color: #666; margin-bottom: 6px; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      font-size: 0.93rem;
+      color: var(--charcoal);
+      transition: border-color 0.3s;
+      font-family: inherit;
+      direction: rtl;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--blush-deep);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    footer {
+      background: var(--charcoal);
+      color: rgba(248,244,238,0.65);
+      padding: 52px 0 32px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(248,244,238,0.12);
+      margin-bottom: 28px;
+    }
+    .footer-brand .logo-mark { background: rgba(248,244,238,0.12); }
+    .footer-brand .logo-text { color: var(--cream); margin-top: 16px; display: block; }
+    .footer-brand p { font-size: 0.85rem; margin-top: 12px; line-height: 1.7; }
+    .footer-nav-col h5 { color: var(--cream); font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-nav-col ul li + li { margin-top: 10px; }
+    .footer-nav-col ul li a { font-size: 0.87rem; color: rgba(248,244,238,0.55); transition: color 0.2s; }
+    .footer-nav-col ul li a:hover { color: var(--blush); }
+    .footer-socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .footer-social-btn {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: rgba(248,244,238,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: rgba(248,244,238,0.7);
+      transition: var(--transition);
+      cursor: pointer;
+      border: 1px solid rgba(248,244,238,0.1);
+    }
+    .footer-social-btn:hover {
+      background: var(--blush-deep);
+      color: var(--white);
+      border-color: var(--blush-deep);
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: 0.82rem; }
+    .footer-tagline { font-size: 0.82rem; color: var(--blush); letter-spacing: 0.06em; }
+
+    /* ══════════════════════════════════
+       TOAST
+    ══════════════════════════════════ */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      z-index: 2000;
+      white-space: nowrap;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 960px) {
+      .hero-inner        { grid-template-columns: 1fr; text-align: center; }
+      .hero-actions      { justify-content: center; }
+      .hero-image-wrap   { max-width: 380px; margin: 0 auto; }
+      .products-grid     { grid-template-columns: repeat(2, 1fr); }
+      .why-grid          { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid        { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps-grid::before { display: none; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid      { grid-template-columns: 1fr; }
+      .footer-inner      { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links  { display: none; }
+      .hamburger  { display: flex; }
+      .section-pad { padding: 64px 0; }
+      .products-grid     { grid-template-columns: 1fr; }
+      .why-grid          { grid-template-columns: 1fr 1fr; }
+      .steps-grid        { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-inner      { grid-template-columns: 1fr; }
+      .insta-photos      { display: none; }
+      .footer-bottom     { flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-image-placeholder { animation: none; }
+      * { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" role="navigation" aria-label="منوی اصلی">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="صفحه اصلی لنامی">
+        <div class="logo-mark"><span>L</span></div>
+        <span class="logo-text">LENAMI</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero">خانه</a></li>
+        <li><a href="#products">محصولات</a></li>
+        <li><a href="#why">درباره ما</a></li>
+        <li><a href="#order">نحوه سفارش</a></li>
+        <li><a href="#contact">تماس با ما</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="باز کردن منو" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile nav -->
+<div class="mobile-nav" id="mobileNav" role="navigation" aria-label="منوی موبایل">
+  <a href="#hero"     onclick="closeMobile()">خانه</a>
+  <a href="#products" onclick="closeMobile()">محصولات</a>
+  <a href="#why"      onclick="closeMobile()">درباره ما</a>
+  <a href="#order"    onclick="closeMobile()">نحوه سفارش</a>
+  <a href="#contact"  onclick="closeMobile()">تماس با ما</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" aria-label="معرفی لنامی">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content reveal">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span class="caption">پوشاک لوکس نوزاد و کودک</span>
+        </div>
+        <h1 class="hero-display">LE<em>N</em>AMI</h1>
+        <p class="hero-slogan">با عشق برای کوچولوهای شما<br>پارچه‌های نرم، طراحی ظریف، کیفیت ماندگار</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary">مشاهده محصولات</a>
+          <a href="#order" class="btn btn-outline">نحوه سفارش</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap reveal">
+        <div class="hero-image-placeholder">
+          <div class="hero-image-inner">
+            <div class="big-icon">🌸</div>
+            <p>تصویر محصول</p>
+          </div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-icon">✨</div>
+          <div class="hero-badge-text">
+            <strong>کیفیت تضمین‌شده</strong>
+            ارسال سراسر ایران
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTS ═══ -->
+<section id="products" class="section-pad" aria-label="محصولات">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="caption">کلکسیون جدید</span>
+      <h2 class="heading-2">محصولات ویژه لنامی</h2>
+      <hr class="divider" />
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="product-image">
+          <span class="product-tag">جدید</span>
+          <div class="product-icon">👶</div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">نوزاد ۰–۳ ماه</p>
+          <h3 class="product-name">سرهمی نرم پنبه‌ای</h3>
+          <p class="product-desc">پارچه ۱۰۰٪ پنبه ارگانیک، فوق‌العاده نرم روی پوست لطیف نوزاد</p>
+          <div class="product-footer">
+            <div class="product-price">۲۸۵,۰۰۰ <span>تومان</span></div>
+            <button class="product-btn" onclick="showToast('محصول به سبد اضافه شد 🌸')">مشاهده</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-image" style="background: linear-gradient(135deg,#D4EAD0 0%,#EDE6DA 100%)">
+          <span class="product-tag">پرفروش</span>
+          <div class="product-icon">🌿</div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">۳–۶ ماه</p>
+          <h3 class="product-name">ست ۳ تکه سبز مِه</h3>
+          <p class="product-desc">شامل تی‌شرت، شلوار و کلاه — رنگ‌های آرامش‌بخش طبیعت</p>
+          <div class="product-footer">
+            <div class="product-price">۴۶۰,۰۰۰ <span>تومان</span></div>
+            <button class="product-btn" onclick="showToast('محصول به سبد اضافه شد 🌸')">مشاهده</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-image" style="background: linear-gradient(135deg,#F7E0DA 0%,#EDE6DA 100%)">
+          <span class="product-tag">ویژه</span>
+          <div class="product-icon">🎀</div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">دختر ۶–۱۲ ماه</p>
+          <h3 class="product-name">پیراهن توری شکوفه</h3>
+          <p class="product-desc">طراحی ظریف گل‌دار، مناسب مجالس خاص و روزهای به‌یادماندنی</p>
+          <div class="product-footer">
+            <div class="product-price">۳۹۵,۰۰۰ <span>تومان</span></div>
+            <button class="product-btn" onclick="showToast('محصول به سبد اضافه شد 🌸')">مشاهده</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-image" style="background: linear-gradient(135deg,#E8E8F5 0%,#EDE6DA 100%)">
+          <div class="product-icon">🐣</div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">پسر ۶–۱۲ ماه</p>
+          <h3 class="product-name">ست بافتنی یاسی</h3>
+          <p class="product-desc">پشمِ نرم‌شده مرینو، گرمای لطیف بدون تحریک پوست حساس</p>
+          <div class="product-footer">
+            <div class="product-price">۴۱۰,۰۰۰ <span>تومان</span></div>
+            <button class="product-btn" onclick="showToast('محصول به سبد اضافه شد 🌸')">مشاهده</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-image" style="background: linear-gradient(135deg,#FFF0D4 0%,#EDE6DA 100%)">
+          <span class="product-tag">محدود</span>
+          <div class="product-icon">⭐</div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">۱–۲ سال</p>
+          <h3 class="product-name">ژاکت کِرِم مخمل</h3>
+          <p class="product-desc">احساس لوکس لمس‌کردنی، گرم‌کننده ایده‌آل در فصل سرد</p>
+          <div class="product-footer">
+            <div class="product-price">۵۲۰,۰۰۰ <span>تومان</span></div>
+            <button class="product-btn" onclick="showToast('محصول به سبد اضافه شد 🌸')">مشاهده</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-image" style="background: linear-gradient(135deg,#E0F0F5 0%,#EDE6DA 100%)">
+          <div class="product-icon">🎁</div>
+        </div>
+        <div class="product-info">
+          <p class="product-category">هدیه تولد</p>
+          <h3 class="product-name">باکس هدیه لنامی</h3>
+          <p class="product-desc">جعبه کادویی با ۴ قطعه انتخابی، بسته‌بندی پریمیوم و کارت هدیه</p>
+          <div class="product-footer">
+            <div class="product-price">۸۹۰,۰۰۰ <span>تومان</span></div>
+            <button class="product-btn" onclick="showToast('محصول به سبد اضافه شد 🌸')">مشاهده</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY LENAMI ═══ -->
+<section id="why" class="section-pad" aria-label="چرا لنامی">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="caption">تفاوت ما</span>
+      <h2 class="heading-2">چرا لنامی انتخاب می‌کنید؟</h2>
+      <hr class="divider" />
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🏅</div>
+        <h3 class="why-title">کیفیت پریمیوم</h3>
+        <p class="why-desc">هر محصول لنامی از پارچه‌های درجه یک با استانداردهای بین‌المللی تولید می‌شود</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌸</div>
+        <h3 class="why-title">پارچه فوق نرم</h3>
+        <p class="why-desc">مواد به‌کاررفته کاملاً ایمن برای پوست حساس نوزاد، فاقد مواد مضر شیمیایی</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🚚</div>
+        <h3 class="why-title">ارسال سریع</h3>
+        <p class="why-desc">ارسال درب منزل به تمام نقاط ایران، بسته‌بندی اختصاصی و مراقبت‌شده</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">💬</div>
+        <h3 class="why-title">پشتیبانی ۲۴/۷</h3>
+        <p class="why-desc">تیم لنامی همیشه آماده پاسخ‌گویی به سؤالات و راهنمایی شما در انتخاب سایز است</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW TO ORDER ═══ -->
+<section id="order" class="section-pad" aria-label="نحوه سفارش">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="caption">فرآیند سفارش</span>
+      <h2 class="heading-2">سفارش در ۴ گام ساده</h2>
+      <hr class="divider" style="background:var(--blush-deep);" />
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num"><span class="step-icon">👗</span></div>
+        <h3 class="step-title">انتخاب محصول</h3>
+        <p class="step-desc">محصول مورد نظر را از کانال یا پیج اینستاگرام انتخاب کنید</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"><span class="step-icon">💌</span></div>
+        <h3 class="step-title">ارسال پیام</h3>
+        <p class="step-desc">کد محصول، سایز و رنگ دلخواه را برای ما ارسال کنید</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"><span class="step-icon">✅</span></div>
+        <h3 class="step-title">ثبت سفارش</h3>
+        <p class="step-desc">پس از تأیید موجودی، فاکتور نهایی صادر و پرداخت انجام می‌شود</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"><span class="step-icon">📦</span></div>
+        <h3 class="step-title">ارسال به سراسر ایران</h3>
+        <p class="step-desc">سفارش با بسته‌بندی لوکس به آدرس شما ارسال می‌شود</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSTAGRAM ═══ -->
+<section id="instagram" aria-label="اینستاگرام لنامی">
+  <div class="container">
+    <div class="insta-inner">
+      <div class="insta-photos">
+        <div class="insta-thumb">🌸</div>
+        <div class="insta-thumb">👶</div>
+        <div class="insta-thumb">🎀</div>
+        <div class="insta-thumb">🌿</div>
+      </div>
+      <div class="insta-text reveal">
+        <span class="caption">ما را دنبال کنید</span>
+        <div class="insta-handle">
+          <a href="https://instagram.com/lenami.co" target="_blank" rel="noopener noreferrer">
+            @lenami.co
+          </a>
+        </div>
+        <br>
+        <a href="https://instagram.com/lenami.co" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top:4px;">
+          دیدن پروفایل
+        </a>
+      </div>
+      <div class="insta-photos">
+        <div class="insta-thumb">⭐</div>
+        <div class="insta-thumb">🎁</div>
+        <div class="insta-thumb">✨</div>
+        <div class="insta-thumb">🌺</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials" class="section-pad" aria-label="نظرات مشتریان">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="caption">نظرات مشتریان</span>
+      <h2 class="heading-2">مادران درباره لنامی چه می‌گویند</h2>
+      <hr class="divider" />
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">&ldquo;</div>
+        <p class="testimonial-text">سرهمی که برای دخترم خریدم باورنکردنی نرم بود. پوستش هیچ‌گونه حساسیتی نشان نداد. بسته‌بندی هم خیلی شیک بود — مثل هدیه‌ای از بهترین بوتیک‌ها.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ن</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="author-name">نازنین احمدی</p>
+            <p class="author-city">تهران</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">&ldquo;</div>
+        <p class="testimonial-text">باکس هدیه لنامی رو برای دوستم خریدم و همه عاشقش شدن. کیفیت پارچه‌ها واقعاً در حد برندهای خارجی بود. قطعاً دوباره سفارش می‌دم.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#A8B5A2 0%,#7D9077 100%)">ف</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="author-name">فاطمه کریمی</p>
+            <p class="author-city">اصفهان</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">&ldquo;</div>
+        <p class="testimonial-text">پشتیبانی لنامی خیلی حرفه‌ای بود. در انتخاب سایز کمکم کردن و سفارشم دقیقاً سر موعد رسید. این برند رو به همه مادرها توصیه می‌کنم.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#E8CFC8 0%,#D4AFA7 100%);color:#333">م</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="author-name">مریم صادقی</p>
+            <p class="author-city">مشهد</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq" class="section-pad" aria-label="سؤالات متداول">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="caption">سؤالات متداول</span>
+      <h2 class="heading-2">پاسخ به سؤالات شما</h2>
+      <hr class="divider" />
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>مدت زمان ارسال سفارش چقدر است؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>سفارش‌های تهران معمولاً ۱ تا ۲ روز کاری و سفارش‌های شهرستان ۳ تا ۵ روز کاری تحویل داده می‌شوند. برای سفارش‌های فوری می‌توانید از طریق تلگرام با ما در تماس باشید.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>چطور سایز مناسب را انتخاب کنم؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>هر محصول لنامی دارای جدول سایزبندی دقیق بر اساس سن و وزن کودک است. تیم پشتیبانی ما در انتخاب سایز صحیح کمکتان می‌کند. کافی است وزن و قد فرزندتان را برای ما بفرستید.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>روش‌های پرداخت چیست؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>می‌توانید از طریق کارت‌به‌کارت، پرداخت آنلاین درگاه بانکی، یا پرداخت در محل (تهران) خرید خود را تکمیل کنید. تمام پرداخت‌ها کاملاً امن و با رسید هستند.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>آیا امکان مرجوعی یا تعویض وجود دارد؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>بله. در صورت عدم رضایت از کیفیت یا مشکل سایز، تا ۷ روز پس از دریافت، با حفظ تگ و بسته‌بندی اصلی می‌توانید محصول را تعویض کنید.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>آیا محصولات لنامی برای پوست حساس مناسبند؟</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <p>کلیه محصولات لنامی از پارچه‌های فاقد مواد شیمیایی مضر تولید می‌شوند و برای پوست حساس‌ترین نوزادان مناسب هستند. در صورت نیاز گواهی استانداردها ارائه می‌شود.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="section-pad" aria-label="تماس با ما">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="caption">ارتباط با ما</span>
+      <h2 class="heading-2">همیشه در کنارتان هستیم</h2>
+      <hr class="divider" />
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>از طریق پیام‌رسان‌های دلخواهتان</h3>
+        <p>تیم لنامی آماده پاسخ‌گویی به سؤالات، راهنمایی در سفارش، و کمک به انتخاب بهترین محصول برای فرزند عزیزتان است.</p>
+        <div class="social-links">
+          <a href="https://t.me/lenamico" target="_blank" rel="noopener noreferrer" class="social-link">
+            <div class="social-link-icon social-telegram">✈️</div>
+            <div class="social-link-text">
+              <strong>تلگرام</strong>
+              <span>@lenamico</span>
+            </div>
+          </a>
+          <a href="https://ble.ir/lenamico" target="_blank" rel="noopener noreferrer" class="social-link">
+            <div class="social-link-icon social-bale">🔵</div>
+            <div class="social-link-text">
+              <strong>بله</strong>
+              <span>@lenamico</span>
+            </div>
+          </a>
+          <a href="https://rubika.ir/lenamico" target="_blank" rel="noopener noreferrer" class="social-link">
+            <div class="social-link-icon social-rubika">🟡</div>
+            <div class="social-link-text">
+              <strong>روبیکا</strong>
+              <span>@lenami</span>
+            </div>
+          </a>
+          <a href="https://instagram.com/lenami.co" target="_blank" rel="noopener noreferrer" class="social-link">
+            <div class="social-link-icon social-instagram">📸</div>
+            <div class="social-link-text">
+              <strong>اینستاگرام</strong>
+              <span>@lenami.co</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <h4>پیام سریع بفرستید</h4>
+        <div class="form-group">
+          <label for="name">نام شما</label>
+          <input type="text" id="name" placeholder="مثلاً: فاطمه رضایی" />
+        </div>
+        <div class="form-group">
+          <label for="phone">شماره تماس</label>
+          <input type="tel" id="phone" placeholder="09xxxxxxxxx" />
+        </div>
+        <div class="form-group">
+          <label for="message">پیام شما</label>
+          <textarea id="message" placeholder="سؤال یا پیام خود را بنویسید..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="submitForm()">ارسال پیام</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer aria-label="پاورقی سایت">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="logo-mark"><span>L</span></div>
+          <span class="logo-text">LENAMI</span>
+        </div>
+        <p>با عشق برای کوچولوهای شما<br>پوشاک لوکس نوزاد و کودک</p>
+        <div class="footer-socials" style="margin-top:20px;">
+          <a href="https://instagram.com/lenami.co" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="اینستاگرام">📸</a>
+          <a href="https://t.me/lenamico"          target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="تلگرام">✈️</a>
+          <a href="https://ble.ir/lenamico" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="بله">🔵</a>
+          <a href="https://rubika.ir/lenamico" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="روبیکا">🟡</a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+        <nav class="footer-nav-col" aria-label="لینک‌های سریع">
+          <h5>دسترسی سریع</h5>
+          <ul>
+            <li><a href="#hero">خانه</a></li>
+            <li><a href="#products">محصولات</a></li>
+            <li><a href="#why">درباره ما</a></li>
+            <li><a href="#order">نحوه سفارش</a></li>
+            <li><a href="#contact">تماس با ما</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-nav-col" aria-label="دسته‌بندی محصولات">
+          <h5>محصولات</h5>
+          <ul>
+            <li><a href="#products">لباس نوزاد</a></li>
+            <li><a href="#products">ست‌های کودک</a></li>
+            <li><a href="#products">بافتنی</a></li>
+            <li><a href="#products">باکس هدیه</a></li>
+            <li><a href="#products">اکسسوری</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-nav-col">
+        <h5>تماس</h5>
+        <ul>
+          <li><a href="https://instagram.com/lenami.co" target="_blank" rel="noopener noreferrer">@lenami.co</a></li>
+          <li><a href="https://t.me/lenamico" target="_blank" rel="noopener noreferrer">تلگرام: @lenamico</a></li>
+          <li style="margin-top:16px;"><a href="#faq" style="color:var(--blush);">سؤالات متداول</a></li>
+          <li><a href="#contact" style="color:var(--blush);">ارسال پیام</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© ۱۴۰۴ لنامی — تمامی حقوق محفوظ است</p>
+      <span class="footer-tagline">با عشق برای کوچولوهای شما ✨</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  /* ── NAVBAR SCROLL ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ── MOBILE NAV ── */
+  const hamburger   = document.getElementById('hamburger');
+  const mobileNav   = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  }
+  document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && !mobileNav.contains(e.target)) closeMobile();
+  });
+
+  /* ── SCROLL REVEAL ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  /* ── FAQ ── */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  /* ── TOAST ── */
+  let toastTimer;
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  /* ── FORM ── */
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    if (!name || !phone) {
+      showToast('لطفاً نام و شماره تماس را وارد کنید');
+      return;
+    }
+    showToast('پیام شما دریافت شد. به زودی تماس می‌گیریم 💕');
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('message').value = '';
+  }
+
+  /* ── SMOOTH SCROLL OFFSET (fixed nav) ── */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
